@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RetirementManagerr.Database\RetirementManagerr.Database.csproj" />
-    <ProjectReference Include="..\RetirementManagerr.Domain\RetirementManagerr.Domain.csproj" />
+    <ProjectReference Include="..\RetirementManagerr.Database\RetirementManager.Database.csproj" />
+    <ProjectReference Include="..\RetirementManagerr.Domain\RetirementManager.Domain.csproj" />
   </ItemGroup>
 
 </Project>
