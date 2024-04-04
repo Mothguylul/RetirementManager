@@ -3,12 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B1857C46-28AA-4E11-A6A2-2F02232AECE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE6E9D76-EBBF-4DF3-A0E6-C93FA8E98585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetirementManagerr.Domain", "RetirementManagerr.Domain\RetirementManagerr.Domain.csproj", "{CA6D2BB5-2801-4C18-A0DF-EBB44C9FB293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA6D2BB5-2801-4C18-A0DF-EBB44C9FB293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6D2BB5-2801-4C18-A0DF-EBB44C9FB293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6D2BB5-2801-4C18-A0DF-EBB44C9FB293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6D2BB5-2801-4C18-A0DF-EBB44C9FB293}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CA6D2BB5-2801-4C18-A0DF-EBB44C9FB293} = {CE6E9D76-EBBF-4DF3-A0E6-C93FA8E98585}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E55F9C5-052F-404C-ABCC-0CBD20C010B4}
 	EndGlobalSection
 EndGlobal
