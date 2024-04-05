@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE6E9D76-EBB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetirementManager.WPF", "src\RetirementManager.WPF\RetirementManager.WPF.csproj", "{33002A4A-CFBB-44F9-B758-7034EE35D1AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetirementManager.Database", "src\RetirementManagerr.Database\RetirementManager.Database.csproj", "{4721A3BB-B048-4BFD-AC94-6188D6FCFB6B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetirementManager.Domain", "src\RetirementManagerr.Domain\RetirementManager.Domain.csproj", "{8DEFF57C-C3CF-4DC3-8793-15B4AEA51333}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetirementManager.WPF.Tests.Unit", "test\RetirementManager.WPF.Tests.Unit\RetirementManager.WPF.Tests.Unit.csproj", "{C3C4CA33-CEA0-4469-B98E-230542C53147}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetirementManager.Domain", "src\RetirementManager.Domain\RetirementManager.Domain.csproj", "{BA6597AD-3C0D-4C55-B404-80552F9CD831}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetirementManager.Database", "src\RetirementManager.Database\RetirementManager.Database.csproj", "{1772B71C-F891-4323-B2EF-B0C2186E0F3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,27 +25,27 @@ Global
 		{33002A4A-CFBB-44F9-B758-7034EE35D1AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33002A4A-CFBB-44F9-B758-7034EE35D1AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33002A4A-CFBB-44F9-B758-7034EE35D1AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4721A3BB-B048-4BFD-AC94-6188D6FCFB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4721A3BB-B048-4BFD-AC94-6188D6FCFB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4721A3BB-B048-4BFD-AC94-6188D6FCFB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4721A3BB-B048-4BFD-AC94-6188D6FCFB6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8DEFF57C-C3CF-4DC3-8793-15B4AEA51333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DEFF57C-C3CF-4DC3-8793-15B4AEA51333}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DEFF57C-C3CF-4DC3-8793-15B4AEA51333}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DEFF57C-C3CF-4DC3-8793-15B4AEA51333}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3C4CA33-CEA0-4469-B98E-230542C53147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C3C4CA33-CEA0-4469-B98E-230542C53147}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3C4CA33-CEA0-4469-B98E-230542C53147}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3C4CA33-CEA0-4469-B98E-230542C53147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6597AD-3C0D-4C55-B404-80552F9CD831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6597AD-3C0D-4C55-B404-80552F9CD831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6597AD-3C0D-4C55-B404-80552F9CD831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6597AD-3C0D-4C55-B404-80552F9CD831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1772B71C-F891-4323-B2EF-B0C2186E0F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1772B71C-F891-4323-B2EF-B0C2186E0F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1772B71C-F891-4323-B2EF-B0C2186E0F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1772B71C-F891-4323-B2EF-B0C2186E0F3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33002A4A-CFBB-44F9-B758-7034EE35D1AE} = {CE6E9D76-EBBF-4DF3-A0E6-C93FA8E98585}
-		{4721A3BB-B048-4BFD-AC94-6188D6FCFB6B} = {CE6E9D76-EBBF-4DF3-A0E6-C93FA8E98585}
-		{8DEFF57C-C3CF-4DC3-8793-15B4AEA51333} = {CE6E9D76-EBBF-4DF3-A0E6-C93FA8E98585}
 		{C3C4CA33-CEA0-4469-B98E-230542C53147} = {B1857C46-28AA-4E11-A6A2-2F02232AECE4}
+		{BA6597AD-3C0D-4C55-B404-80552F9CD831} = {CE6E9D76-EBBF-4DF3-A0E6-C93FA8E98585}
+		{1772B71C-F891-4323-B2EF-B0C2186E0F3F} = {CE6E9D76-EBBF-4DF3-A0E6-C93FA8E98585}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E55F9C5-052F-404C-ABCC-0CBD20C010B4}

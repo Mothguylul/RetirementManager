@@ -1,4 +1,4 @@
-﻿namespace RetirementManagerr.Domain;
+﻿namespace RetirementManager.Domain.Models;
 
 public class Client
 {

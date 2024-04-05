@@ -1,7 +1,7 @@
 ﻿
-namespace RetirementManagerr.Domain.Interfaces;
+namespace RetirementManager.Domain.Interfaces;
 
-using RetirementManagerr.Domain.Interfaces;
+using RetirementManager.Domain.Models;
 
 public interface IRepository
 {

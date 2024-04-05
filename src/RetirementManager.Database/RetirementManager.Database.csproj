@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RetirementManagerr.Domain\RetirementManager.Domain.csproj" />
+    <ProjectReference Include="..\RetirementManager.Domain\RetirementManager.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

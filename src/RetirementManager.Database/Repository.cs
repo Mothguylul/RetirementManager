@@ -1,15 +1,15 @@
 ﻿
 using System.Data;
-using RetirementManagerr.Domain;
+using RetirementManager.Domain.Models;
 using System.Data.SQLite;
 using Dapper;
-using RetirementManagerr.Domain.Interfaces;
+using RetirementManager.Domain.Interfaces;
 
-namespace RetirementManagerr.Database
-{
+namespace RetirementManager.Database;
+
     public class Repository : IRepository
     {
-        private readonly string connectionString = "Data Source=C:\\Code\\RetirementManager\\src\\RetirementManagerr.Database\\database.db";
+        private readonly string connectionString = "Data Source=C:\\Code\\RetirementManager\\src\\RetirementManager.Database\\database.db";
 
         public IEnumerable<Assignment> GetAssignments()
         {
@@ -99,4 +99,4 @@ namespace RetirementManagerr.Database
             }
         }
     }
-}
+
