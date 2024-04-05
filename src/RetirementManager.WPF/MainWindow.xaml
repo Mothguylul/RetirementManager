@@ -6,7 +6,25 @@
         xmlns:local="clr-namespace:RetirementManager.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Grid Margin="10">
+        <TabControl>
+            <TabItem Header="Clients">
+                <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center">These are the clients.</TextBlock>
+            </TabItem>
+            <TabItem Header="Workers">
+                <ListView ItemsSource="{Binding Workers}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Email" Width="100" DisplayMemberBinding="{Binding Email}"/>
+                            <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Mobil}"/>
+                            <GridViewColumn Header="Birth Date" Width="100" DisplayMemberBinding="{Binding BirthDate}"/>
+                            <GridViewColumn Header="Notes" Width="200" DisplayMemberBinding="{Binding Notes}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

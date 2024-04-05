@@ -9,8 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RetirementManagerr.Database\RetirementManager.Database.csproj" />
-    <ProjectReference Include="..\RetirementManagerr.Domain\RetirementManager.Domain.csproj" />
+    <ProjectReference Include="..\..\test\RetirementManager.WPF.Tests.Unit\RetirementManager.WPF.Tests.Unit.csproj" />
+    <ProjectReference Include="..\RetirementManager.Database\RetirementManager.Database.csproj" />
+    <ProjectReference Include="..\RetirementManager.Domain\RetirementManager.Domain.csproj" />
+    <ProjectReference Include="..\RetirementManager.Database\RetirementManager.Database.csproj" />
+    <ProjectReference Include="..\RetirementManager.Domain\RetirementManager.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>
