@@ -14,16 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RetirementManager.WPF
+namespace RetirementManager.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaktionslogik für WorkerListView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WorkerListView : UserControl
     {
-        public MainWindow()
+        public WorkerListView()
         {
             InitializeComponent();
+
+            DataContext = new WorkerList();
         }
     }
 }

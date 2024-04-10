@@ -4,27 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RetirementManager.WPF"
+        xmlns:views="clr-namespace:RetirementManager.WPF.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid Margin="10">
         <TabControl>
+
             <TabItem Header="Clients">
-                <TextBlock HorizontalAlignment="Center"
-                       VerticalAlignment="Center">These are the clients.</TextBlock>
+
             </TabItem>
+
             <TabItem Header="Workers">
-                <ListView ItemsSource="{Binding Workers}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
-                            <GridViewColumn Header="Email" Width="100" DisplayMemberBinding="{Binding Email}"/>
-                            <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Mobil}"/>
-                            <GridViewColumn Header="Birth Date" Width="100" DisplayMemberBinding="{Binding BirthDate}"/>
-                            <GridViewColumn Header="Notes" Width="200" DisplayMemberBinding="{Binding Notes}"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <views:WorkerListView/>
             </TabItem>
+
+            <TabItem Header="Assignments">
+
+            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

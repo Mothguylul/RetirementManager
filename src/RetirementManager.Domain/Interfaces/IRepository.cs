@@ -20,5 +20,7 @@ public interface IRepository
     bool DeleteTown(int townId);
 
     bool TogglePause(Assignment assignment);
+
+    bool DeleteWorker(int workerId);
 }
 
