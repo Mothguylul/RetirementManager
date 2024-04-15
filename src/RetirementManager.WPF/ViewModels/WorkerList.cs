@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Models;
+﻿using RetirementManager.Domain.Interfaces;
+using RetirementManager.Domain.Models;
 using RetirementManager.WPF.Commands;
 using System;
 using System.Collections.Generic;
@@ -28,15 +29,16 @@ public class WorkerList : ViewModelBase
         }
     }
 
-    public WorkerList()
+    public WorkerList(IRepository iRepository)
     {
         Workers = new ObservableCollection<Worker>();
-        DeleteWorkerCommand = new DeleteWorkerCommand(this);
 
-        foreach (Worker worker in DataAccess.Repository.GetWorkers())
+        foreach (Worker worker in iRepository.GetWorkers())
         {
             Workers.Add(worker);
         }
+
+        DeleteWorkerCommand = new DeleteWorkerCommand(this, iRepository);
     }
 }
 

@@ -10,19 +10,8 @@
 
     <Grid Margin="10">
         <TabControl>
-
-            <TabItem Header="Clients">
-
-            </TabItem>
-
-            <TabItem Header="Workers">
-                <views:WorkerListView/>
-            </TabItem>
-
-            <TabItem Header="Assignments">
-
-            </TabItem>
-
+            <TabItem Header="Clients" Content=""/>
+            <TabItem Header="Workers" Content="{Binding WorkerList}"/>
         </TabControl>
     </Grid>
 </Window>

@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\test\RetirementManager.WPF.Tests.Unit\RetirementManager.WPF.Tests.Unit.csproj" />
     <ProjectReference Include="..\RetirementManager.Database\RetirementManager.Database.csproj" />
     <ProjectReference Include="..\RetirementManager.Domain\RetirementManager.Domain.csproj" />

@@ -24,8 +24,6 @@ namespace RetirementManager.WPF.Views
         public WorkerListView()
         {
             InitializeComponent();
-
-            DataContext = new WorkerList();
         }
     }
 }
