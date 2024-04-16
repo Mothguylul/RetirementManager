@@ -10,7 +10,7 @@
 
     <Grid Margin="10">
         <TabControl>
-            <TabItem Header="Clients" Content=""/>
+            <TabItem Header="Clients" Content="{Binding ClientList}"/>
             <TabItem Header="Workers" Content="{Binding WorkerList}"/>
         </TabControl>
     </Grid>

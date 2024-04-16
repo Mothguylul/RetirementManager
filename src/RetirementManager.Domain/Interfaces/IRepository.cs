@@ -11,6 +11,8 @@ public interface IRepository
 
     IEnumerable<Assignment> GetAssignments();
 
+    IEnumerable<Client> GetClients();
+
     bool CreateAssignment(Assignment assignment);
 
     bool DeleteAssignment(int workersId);
@@ -22,5 +24,7 @@ public interface IRepository
     bool TogglePause(Assignment assignment);
 
     bool DeleteWorker(int workerId);
+
+    bool DeleteClient(int clientId);
 }
 

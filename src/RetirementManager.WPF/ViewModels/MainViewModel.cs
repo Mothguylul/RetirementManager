@@ -13,9 +13,11 @@ namespace RetirementManager.WPF.ViewModels
         public MainViewModel(IRepository iRepository) 
         {
             WorkerList = new WorkerList(iRepository);
+            ClientList = new ClientList(iRepository);
 
         }
         public WorkerList WorkerList { get; set; }
+        public ClientList ClientList { get; set; }
 
     }
 }

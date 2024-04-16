@@ -44,6 +44,17 @@ public class Repository : IRepository
         }
     }
 
+    public IEnumerable<Client> GetClients()
+    {
+        using (IDbConnection connect = new SQLiteConnection(connectionString))
+        {
+            string sql = "SELECT * FROM Clients";
+            CommandDefinition command = new CommandDefinition(sql);
+
+            return connect.Query<Client>(command);
+        }
+    }  
+
     public bool CreateAssignment(Assignment assignment)
     {
         using (IDbConnection connection = new SQLiteConnection(connectionString))
@@ -104,6 +115,17 @@ public class Repository : IRepository
         using (IDbConnection connection = new SQLiteConnection(connectionString))
         {
             string sqlname = $"DELETE FROM Workers WHERE Id = '{workerId}'";
+            CommandDefinition command = new CommandDefinition(sqlname);
+
+            return connection.Execute(command) > 0;
+        }
+    }
+
+    public bool DeleteClient(int clientId)
+    {
+        using (IDbConnection connection = new SQLiteConnection(connectionString))
+        {
+            string sqlname = $"DELETE FROM Clients WHERE Id = '{clientId}'";
             CommandDefinition command = new CommandDefinition(sqlname);
 
             return connection.Execute(command) > 0;

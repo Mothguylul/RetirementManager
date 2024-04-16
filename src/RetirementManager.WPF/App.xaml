@@ -11,5 +11,8 @@
         <DataTemplate DataType="{x:Type viewmodels:WorkerList}">
             <views:WorkerListView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ClientList}">
+            <views:ClientListView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
