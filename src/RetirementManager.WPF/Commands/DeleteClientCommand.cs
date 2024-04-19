@@ -30,7 +30,7 @@ namespace RetirementManager.WPF.Commands
 
             iRepository.DeleteClient(clientToDelete.Id);
 
-            clientList.ClientsRemove(clientToDelete);
+            clientList.Clients.Remove(clientToDelete);
             clientList.SelectedClient = null;
 
         }

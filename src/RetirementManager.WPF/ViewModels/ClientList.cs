@@ -14,7 +14,7 @@ namespace RetirementManager.WPF.ViewModels;
 
 public class ClientList : ViewModelBase
 {
-    public ObservableCollection<Client>? Clients { get; private set; }
+    public ObservableCollection<Client> Clients { get; private set; }
 
     private Client? _selectedClient;
 
@@ -40,11 +40,6 @@ public class ClientList : ViewModelBase
         }
 
         DeleteClientCommand = new DeleteClientCommand(this, irepository);
-    }
-
-    public void ClientsRemove(Client client)
-    {
-
     }
 }
 

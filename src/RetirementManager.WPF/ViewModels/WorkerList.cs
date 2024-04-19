@@ -16,6 +16,7 @@ public class WorkerList : ViewModelBase
     public ObservableCollection<Worker> Workers { get; private set; }
 
     public ICommand DeleteWorkerCommand { get; set; }
+    public ICommand OpenWorkerWindowCommand { get; set; }
 
     private Worker? _selectedWorker;
 
@@ -28,7 +29,6 @@ public class WorkerList : ViewModelBase
             OnPropertyChanged(nameof(SelectedWorker));
         }
     }
-
     public WorkerList(IRepository iRepository)
     {
         Workers = new ObservableCollection<Worker>();
@@ -39,6 +39,7 @@ public class WorkerList : ViewModelBase
         }
 
         DeleteWorkerCommand = new DeleteWorkerCommand(this, iRepository);
+        OpenWorkerWindowCommand = new OpenWorkerWindowCommand();
     }
 }
 

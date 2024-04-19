@@ -34,12 +34,17 @@
             <Button Content="Add"
             Width="80"
             Height="25"
-            Margin="10 0 0 0"/>
+            Margin="10 0 0 0"
+            CommandParameter="Add"
+            Command="{Binding OpenWorkerWindowCommand}"/>
 
             <Button Content="Edit" 
             Width="80"
             Height="25"
-            Margin="10 0 0 0"/>
+            Margin="10 0 0 0"
+            CommandParameter="{Binding SelectedWorker}"
+            Command="{Binding OpenWorkerWindowCommand}"/>
+    
 
             <Button Content="Delete"
             Width="80"
