@@ -24,10 +24,6 @@
                 <TextBox Text="{Binding BirthDate}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 10">
-                <Label Content="Mobil"/>
-                <TextBox Text="{Binding Mobil}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0 10">
                 <Label Content="Notes"/>
                 <TextBox Text="{Binding Notes}"/>
             </StackPanel>
@@ -37,7 +33,8 @@
                 <Button Content="Save" 
             Margin="25"
             Width="50"
-            CommandParameter="{Binding _worker}"
+            CommandParameter="{Binding Worker}"
+            Command="{Binding SaveWorkerCommand}"            
                         ></Button>
                 <Button Content="Cancel" 
             Margin="25"

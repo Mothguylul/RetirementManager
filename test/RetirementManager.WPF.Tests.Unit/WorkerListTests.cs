@@ -9,13 +9,13 @@ using RetirementManager.WPF.ViewModels;
 
 public class WorkerListTests
 {
-    private readonly IRepository repository = Substitute.For<IRepository>();
+    private readonly IRepository<Worker> repository = Substitute.For<IRepository<Worker>>();
 
     private readonly WorkerList sut;
 
     public WorkerListTests()
     {
-        repository.GetWorkers().Returns(new List<Worker>
+        repository.GetAll().Returns(new List<Worker>
         {
             new Worker
             {
@@ -48,7 +48,7 @@ public class WorkerListTests
         // Act
 
         // Assert
-        repository.Received(1).GetWorkers();
+        repository.Received(1).GetAll();
         sut.Workers.Should().NotBeNull();
     }
 

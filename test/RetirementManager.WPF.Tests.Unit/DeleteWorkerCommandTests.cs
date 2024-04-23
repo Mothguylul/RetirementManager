@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 public class DeleteWorkerCommandTests
 {
-    private readonly IRepository repository = Substitute.For<IRepository>();
+    private readonly IRepository<Worker> repository = Substitute.For<IRepository<Worker>>();
 
     private readonly WorkerList workerList;
 
@@ -17,7 +17,7 @@ public class DeleteWorkerCommandTests
 
     public DeleteWorkerCommandTests()
     {
-        repository.GetWorkers().Returns(new List<Worker>
+        repository.GetAll().Returns(new List<Worker>
         {
             new Worker
             {
@@ -72,14 +72,14 @@ public class DeleteWorkerCommandTests
     {
         // Arrange
         Worker workerToDelete = workerList.Workers[0];
-        repository.DeleteWorker(workerToDelete.Id).Returns(true);
+        repository.Delete(workerToDelete.Id).Returns(true);
         workerList.SelectedWorker = workerToDelete;
 
         // Act
         sut.Execute(workerList.SelectedWorker);
 
         // Assert
-        repository.Received(1).DeleteWorker(Arg.Is(workerToDelete.Id));
+        repository.Received(1).Delete(Arg.Is(workerToDelete.Id));
     }
 
     [Fact]
@@ -87,7 +87,7 @@ public class DeleteWorkerCommandTests
     {
         // Arrange
         Worker workerToDelete = workerList.Workers[0];
-        repository.DeleteWorker(workerToDelete.Id).Returns(true);
+        repository.Delete(workerToDelete.Id).Returns(true);
         workerList.SelectedWorker = workerToDelete;
 
         // Act

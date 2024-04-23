@@ -4,131 +4,53 @@ using RetirementManager.Domain.Models;
 using System.Data.SQLite;
 using Dapper;
 using RetirementManager.Domain.Interfaces;
+using Dapper.Contrib.Extensions;
 
 namespace RetirementManager.Database;
 
-public class Repository : IRepository
+public class Repository<T> : IRepository<T> where T : ModelObject
 {
     private readonly string connectionString = "Data Source=C:\\Code\\RetirementManager\\src\\RetirementManager.Database\\database.db";
 
-    public IEnumerable<Assignment> GetAssignments()
+    public IEnumerable<T> GetAll()
     {
         using (IDbConnection connection = new SQLiteConnection(connectionString))
         {
-            string sql = "SELECT * FROM Assignments";
+            string tableName = typeof(T).Name + "s";
+            string sql = $"SELECT * FROM {tableName}";
+
             CommandDefinition command = new CommandDefinition(sql);
-
-            return connection.Query<Assignment>(command);
+            return connection.Query<T>(command);
         }
     }
 
-    public IEnumerable<Town> GetTowns()
+
+    public bool Create(T entity)
     {
         using (IDbConnection connection = new SQLiteConnection(connectionString))
         {
-            string sql = "SELECT * FROM Towns";
+            return connection.Insert(entity) != 0;
+        }
+    }
+
+    public bool Delete(int id)
+    {
+        using (IDbConnection connection = new SQLiteConnection(connectionString))
+        {
+            string tableName = typeof(T).Name + "s";
+            string sql = $"DELETE FROM {tableName} WHERE Id = {id} ";
+
             CommandDefinition command = new CommandDefinition(sql);
-
-            return connection.Query<Town>(command);
-        }
-    }
-
-    public IEnumerable<Worker> GetWorkers()
-    {
-        using (IDbConnection connect = new SQLiteConnection(connectionString))
-        {
-            string sql = "SELECT * FROM Workers";
-            CommandDefinition command = new CommandDefinition(sql);
-
-            return connect.Query<Worker>(command);
-        }
-    }
-
-    public IEnumerable<Client> GetClients()
-    {
-        using (IDbConnection connect = new SQLiteConnection(connectionString))
-        {
-            string sql = "SELECT * FROM Clients";
-            CommandDefinition command = new CommandDefinition(sql);
-
-            return connect.Query<Client>(command);
-        }
-    }  
-
-    public bool CreateAssignment(Assignment assignment)
-    {
-        using (IDbConnection connection = new SQLiteConnection(connectionString))
-        {
-            string sqlname = $"INSERT Into Assignments (WorkerId,EndDate,StartDate,Notes,Paused) VALUES('{assignment.WorkerId}', '{assignment.EndDate}', '{assignment.StartDate}', '{assignment.Notes}', '{assignment.Paused}')";
-            CommandDefinition command = new CommandDefinition(sqlname);
-
             return connection.Execute(command) > 0;
         }
     }
 
-    public bool DeleteAssignment(int workesId)
+
+    public bool Update(T entity)
     {
         using (IDbConnection connection = new SQLiteConnection(connectionString))
         {
-            string sqlname = $"DELETE FROM Assignments WHERE Id = '{workesId}'";
-            CommandDefinition command = new CommandDefinition(sqlname);
-
-            return connection.Execute(command) > 0;
-        }
-    }
-
-    public bool TogglePause(Assignment assignment)
-    {
-        using (IDbConnection connection = new SQLiteConnection(connectionString))
-        {
-            string sqlname = $"UPDATE Assignments SET Paused = '{!assignment.Paused}' WHERE Id = {assignment.Id}";
-            CommandDefinition command = new CommandDefinition(sqlname);
-
-            return connection.Execute(command) > 0;
-        }
-    }
-
-    public bool CreateNewTown(string newTown)
-    {
-        using (IDbConnection connection = new SQLiteConnection(connectionString))
-        {
-            string sqlname = $"INSERT Into Towns (Name) VALUES('{newTown}')";
-            CommandDefinition command = new CommandDefinition(sqlname);
-
-            return connection.Execute(command) > 0;
-        }
-    }
-
-    public bool DeleteTown(int townId)
-    {
-        using (IDbConnection connection = new SQLiteConnection(connectionString))
-        {
-            string sqlname = $"DELETE FROM Towns WHERE Id = '{townId}'";
-            CommandDefinition command = new CommandDefinition(sqlname);
-
-            return connection.Execute(command) > 0;
-        }
-    }
-
-    public bool DeleteWorker(int workerId)
-    {
-        using (IDbConnection connection = new SQLiteConnection(connectionString))
-        {
-            string sqlname = $"DELETE FROM Workers WHERE Id = '{workerId}'";
-            CommandDefinition command = new CommandDefinition(sqlname);
-
-            return connection.Execute(command) > 0;
-        }
-    }
-
-    public bool DeleteClient(int clientId)
-    {
-        using (IDbConnection connection = new SQLiteConnection(connectionString))
-        {
-            string sqlname = $"DELETE FROM Clients WHERE Id = '{clientId}'";
-            CommandDefinition command = new CommandDefinition(sqlname);
-
-            return connection.Execute(command) > 0;
+            return connection.Update(entity);
         }
     }
 }

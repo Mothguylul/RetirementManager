@@ -37,7 +37,7 @@ namespace RetirementManager.WPF
         {
             IServiceCollection services = new ServiceCollection();
 
-            services.AddSingleton<IRepository, Repository>();
+            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<MainViewModel>();
 
             return services.BuildServiceProvider();

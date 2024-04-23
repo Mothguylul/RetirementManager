@@ -29,17 +29,17 @@ public class WorkerList : ViewModelBase
             OnPropertyChanged(nameof(SelectedWorker));
         }
     }
-    public WorkerList(IRepository iRepository)
+    public WorkerList(IRepository<Worker> iRepository)
     {
         Workers = new ObservableCollection<Worker>();
 
-        foreach (Worker worker in iRepository.GetWorkers())
+        foreach (Worker worker in iRepository.GetAll())
         {
             Workers.Add(worker);
         }
 
         DeleteWorkerCommand = new DeleteWorkerCommand(this, iRepository);
-        OpenWorkerWindowCommand = new OpenWorkerWindowCommand();
+        OpenWorkerWindowCommand = new OpenWorkerWindowCommand(iRepository);
     }
 }
 

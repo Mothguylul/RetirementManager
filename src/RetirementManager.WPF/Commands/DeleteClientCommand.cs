@@ -12,10 +12,10 @@ namespace RetirementManager.WPF.Commands
     public class DeleteClientCommand : CommandBase
     {
         private ClientList clientList;
-        private IRepository iRepository;
+        private IRepository<Client> iRepository;
 
 
-        public DeleteClientCommand(ClientList clientList, IRepository iRepository)
+        public DeleteClientCommand(ClientList clientList, IRepository<Client> iRepository)
         {
             this.clientList = clientList;
             this.iRepository = iRepository;
@@ -28,7 +28,7 @@ namespace RetirementManager.WPF.Commands
 
             Client clientToDelete = (parameter as Client)!;
 
-            iRepository.DeleteClient(clientToDelete.Id);
+            iRepository.Delete(clientToDelete.Id);
 
             clientList.Clients.Remove(clientToDelete);
             clientList.SelectedClient = null;

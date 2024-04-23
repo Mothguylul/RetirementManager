@@ -3,28 +3,13 @@ namespace RetirementManager.Domain.Interfaces;
 
 using RetirementManager.Domain.Models;
 
-public interface IRepository
+public interface IRepository<T> where T : ModelObject
 {
-    IEnumerable<Town> GetTowns();
+    IEnumerable<T> GetAll();
 
-    IEnumerable<Worker> GetWorkers();
+    bool Create(T entity);
 
-    IEnumerable<Assignment> GetAssignments();
+    bool Update(T entity);
 
-    IEnumerable<Client> GetClients();
-
-    bool CreateAssignment(Assignment assignment);
-
-    bool DeleteAssignment(int workersId);
-
-    bool CreateNewTown(string newTown);
-
-    bool DeleteTown(int townId);
-
-    bool TogglePause(Assignment assignment);
-
-    bool DeleteWorker(int workerId);
-
-    bool DeleteClient(int clientId);
+    bool Delete(int id);
 }
-

@@ -1,10 +1,13 @@
-﻿using RetirementManager.Domain.Models;
+﻿using RetirementManager.Domain.Interfaces;
+using RetirementManager.Domain.Models;
+using RetirementManager.WPF.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Xml.Linq;
 
 namespace RetirementManager.WPF.ViewModels
@@ -13,7 +16,9 @@ namespace RetirementManager.WPF.ViewModels
     {
 
         private Worker _worker;
-        public Worker? Worker => _worker;
+        public Worker Worker => _worker;
+
+        public ICommand SaveWorkerCommand;
 
         private string _name { get; set; } = string.Empty;
         public string Name
@@ -77,8 +82,10 @@ namespace RetirementManager.WPF.ViewModels
         }
 
 
-        public EditableWorker(Worker? worker)
+        public EditableWorker(Worker? worker, IRepository<Worker> repository)
         {
+            SaveWorkerCommand = new SaveWorkerCommand(repository);
+
             if(worker is null)
             {
                 _worker = new Worker();

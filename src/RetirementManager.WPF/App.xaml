@@ -5,9 +5,6 @@
              xmlns:viewmodels="clr-namespace:RetirementManager.WPF.ViewModels"
              xmlns:views="clr-namespace:RetirementManager.WPF.Views">
     <Application.Resources>
-        <DataTemplate DataType="{x:Type GroupBox}">
-            <TextBlock>Hi</TextBlock>
-        </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:WorkerList}">
             <views:WorkerListView/>
         </DataTemplate>

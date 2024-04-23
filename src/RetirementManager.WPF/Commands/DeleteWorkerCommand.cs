@@ -13,10 +13,10 @@ public class DeleteWorkerCommand : CommandBase
 {
 
     private WorkerList workerList;
-    private IRepository iRepository;
+    private IRepository<Worker> iRepository;
 
 
-    public DeleteWorkerCommand(WorkerList workerList, IRepository iRepository)
+    public DeleteWorkerCommand(WorkerList workerList, IRepository<Worker> iRepository)
     {
         this.workerList = workerList;
         this.iRepository = iRepository;
@@ -29,7 +29,7 @@ public class DeleteWorkerCommand : CommandBase
 
         Worker workerToDelete = (parameter as Worker)!;
 
-        iRepository.DeleteWorker(workerToDelete.Id);
+        iRepository.Delete(workerToDelete.Id);
 
         workerList.Workers.Remove(workerToDelete);
         workerList.SelectedWorker = null;

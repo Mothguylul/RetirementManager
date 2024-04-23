@@ -30,11 +30,11 @@ public class ClientList : ViewModelBase
             OnPropertyChanged(nameof(SelectedClient));
         }
     }
-    public ClientList(IRepository irepository)
+    public ClientList(IRepository<Client> irepository)
     {
         Clients = new ObservableCollection<Client>();
 
-        foreach (Client client in irepository.GetClients())
+        foreach (Client client in irepository.GetAll())
         {
             Clients.Add(client);
         }

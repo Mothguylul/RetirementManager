@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Models;
+﻿using RetirementManager.Domain.Interfaces;
+using RetirementManager.Domain.Models;
 using RetirementManager.WPF.ViewModels;
 using RetirementManager.WPF.Views;
 using System;
@@ -14,12 +15,18 @@ namespace RetirementManager.WPF.Commands
     public class OpenWorkerWindowCommand : CommandBase
     {
 
+        private IRepository<Worker> _repository;
+        public OpenWorkerWindowCommand(IRepository<Worker> repository) 
+        {
+            _repository = repository;
+        }
+
         public override void Execute(object? parameter)
         {
             AddOrEditWorker addoreditworker = new AddOrEditWorker();
 
             Worker? worker = parameter as Worker;
-            addoreditworker.DataContext = new EditableWorker(worker);
+            addoreditworker.DataContext = new EditableWorker(worker, _repository);
             addoreditworker.Show();
         }
 

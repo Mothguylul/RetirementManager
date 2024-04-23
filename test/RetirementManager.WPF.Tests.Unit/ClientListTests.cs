@@ -8,13 +8,14 @@ using RetirementManager.WPF.ViewModels;
 
 public class ClientListTests
 {
-    private readonly IRepository repository = Substitute.For<IRepository>();
+    private readonly IRepository<Client> repository = Substitute.For<IRepository<Client>>();
+
 
     private readonly ClientList sut;
 
     public ClientListTests()
     {
-        repository.GetClients().Returns(new List<Client>
+        repository.GetAll().Returns(new List<Client>
         {
             new Client
             {
@@ -43,7 +44,7 @@ public class ClientListTests
         // Act
 
         // Assert
-        repository.Received(1).GetClients();
+        repository.Received(1).GetAll();
         sut.Clients.Should().NotBeNull();
     }
 

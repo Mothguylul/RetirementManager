@@ -1,9 +1,7 @@
 ﻿namespace RetirementManager.Domain.Models;
 
-public class Town
+public class Town : ModelObject
 {
-    public int Id { get; set; }
-
     public string Name { get; set; } = string.Empty;
 }
 

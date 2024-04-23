@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 public class DeleteClientCommandTests
 {
-    private readonly IRepository repository = Substitute.For<IRepository>();
+    private readonly IRepository<Client> repository = Substitute.For<IRepository<Client>>();
 
     private readonly ClientList clientList;
 
@@ -17,7 +17,7 @@ public class DeleteClientCommandTests
 
     public DeleteClientCommandTests()
     {
-        repository.GetClients().Returns(new List<Client>
+        repository.GetAll().Returns(new List<Client>
         {
             new Client
             {
@@ -68,14 +68,14 @@ public class DeleteClientCommandTests
     {
         // Arrange
         Client clientToDelete = clientList.Clients[0];
-        repository.DeleteClient(clientToDelete.Id).Returns(true);
+        repository.Delete(clientToDelete.Id).Returns(true);
         clientList.SelectedClient = clientToDelete;
 
         // Act
         sut.Execute(clientList.SelectedClient);
 
         // Assert
-        repository.Received(1).DeleteClient(Arg.Is(clientToDelete.Id));
+        repository.Received(1).Delete(Arg.Is(clientToDelete.Id));
     }
 
     [Fact]
@@ -83,7 +83,7 @@ public class DeleteClientCommandTests
     {
         // Arrange
         Client clientToDelete = clientList.Clients[0];
-        repository.DeleteClient(clientToDelete.Id).Returns(true);
+        repository.Delete(clientToDelete.Id).Returns(true);
         clientList.SelectedClient = clientToDelete;
 
         // Act

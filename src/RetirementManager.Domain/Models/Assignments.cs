@@ -1,8 +1,7 @@
 ﻿namespace  RetirementManager.Domain.Models;
 
-public class Assignment
-    {
-        public int Id { get; set; }
+public class Assignment : ModelObject
+{
         public int WorkerId { get; set; }
 
         public string StartDate { get; set; } = string.Empty;
