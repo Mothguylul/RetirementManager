@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Interfaces;
+﻿using RetirementManager.Database;
+using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
 using RetirementManager.WPF.Commands;
 using System;
@@ -18,6 +19,8 @@ public class WorkerList : ViewModelBase
     public ICommand DeleteWorkerCommand { get; set; }
     public ICommand OpenWorkerWindowCommand { get; set; }
 
+    private IRepository<Worker> _workerRepository;
+
     private Worker? _selectedWorker;
 
     public Worker? SelectedWorker
@@ -31,7 +34,10 @@ public class WorkerList : ViewModelBase
     }
     public WorkerList(IRepository<Worker> iRepository)
     {
+        _workerRepository = iRepository;
         Workers = new ObservableCollection<Worker>();
+
+        SaveWorkerCommand.WorkersUpdated += UpdateWorkerListUI;
 
         foreach (Worker worker in iRepository.GetAll())
         {
@@ -40,6 +46,16 @@ public class WorkerList : ViewModelBase
 
         DeleteWorkerCommand = new DeleteWorkerCommand(this, iRepository);
         OpenWorkerWindowCommand = new OpenWorkerWindowCommand(iRepository);
+    }
+
+    public void UpdateWorkerListUI()
+    {
+        Workers.Clear();
+
+        foreach (Worker worker in _workerRepository.GetAll())
+        {
+            Workers.Add(worker);
+        }
     }
 }
 

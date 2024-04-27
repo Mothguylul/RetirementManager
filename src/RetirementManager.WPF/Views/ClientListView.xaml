@@ -40,12 +40,16 @@
             <Button Content="Add"
         Width="80"
         Height="25"
-        Margin="10 0 0 0"/>
+        Margin="10 0 0 0"
+        CommandParameter="Add"
+        Command="{Binding OpenClientWindowCommand}"/>
 
             <Button Content="Edit" 
         Width="80"
         Height="25"
-        Margin="10 0 0 0"/>
+        Margin="10 0 0 0"
+        CommandParameter="{Binding SelectedClient}"
+        Command="{Binding OpenClientWindowCommand}"/>
 
             <Button Content="Delete"
         Width="80"

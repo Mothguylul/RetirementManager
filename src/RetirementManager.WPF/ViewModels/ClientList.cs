@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RetirementManager.WPF.ViewModels;
@@ -18,7 +19,11 @@ public class ClientList : ViewModelBase
 
     private Client? _selectedClient;
 
+    private IRepository<Client> _repository;
+
     public ICommand DeleteClientCommand { get; set; }
+
+    public ICommand OpenClientWindowCommand { get; set; }
 
 
     public Client? SelectedClient
@@ -30,16 +35,20 @@ public class ClientList : ViewModelBase
             OnPropertyChanged(nameof(SelectedClient));
         }
     }
-    public ClientList(IRepository<Client> irepository)
+    public ClientList(IRepository<Client> repository)
     {
+        _repository = repository;
+
         Clients = new ObservableCollection<Client>();
 
-        foreach (Client client in irepository.GetAll())
+        foreach (Client client in repository.GetAll())
         {
             Clients.Add(client);
         }
 
-        DeleteClientCommand = new DeleteClientCommand(this, irepository);
+        DeleteClientCommand = new DeleteClientCommand(this, repository);
+        OpenClientWindowCommand = new OpenClientWindowCommand(repository);
+
     }
 }
 

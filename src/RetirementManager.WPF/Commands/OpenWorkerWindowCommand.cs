@@ -26,13 +26,13 @@ namespace RetirementManager.WPF.Commands
             AddOrEditWorker addoreditworker = new AddOrEditWorker();
 
             Worker? worker = parameter as Worker;
-            addoreditworker.DataContext = new EditableWorker(worker, _repository);
+            addoreditworker.DataContext = new EditableWorker(worker, _repository, addoreditworker);
             addoreditworker.Show();
         }
 
         public override bool CanExecute(object? parameter)
         {
-            return parameter is "Add" || parameter as Worker is not null;  
+            return parameter is "Add" || parameter as Worker is not  null;  
         }
     }
 }
