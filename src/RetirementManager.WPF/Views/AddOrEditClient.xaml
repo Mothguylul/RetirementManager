@@ -41,8 +41,8 @@
                 <Button Content="Save" 
          Margin="25"
          Width="50"
-         CommandParameter=""
-         Command=""            
+         CommandParameter="{Binding Client}"
+         Command="{Binding SaveClientCommand}"            
                      ></Button>
                 <Button Content="Cancel" 
          Margin="25"

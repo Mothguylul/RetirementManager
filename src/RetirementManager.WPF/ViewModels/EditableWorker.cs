@@ -84,7 +84,6 @@ namespace RetirementManager.WPF.ViewModels
 
         public ICommand SaveWorkerCommand { get; set; }
 
-
         public EditableWorker(Worker? worker, IRepository<Worker> repository, Window workerWindow)
         {
             SaveWorkerCommand = new SaveWorkerCommand(repository, workerWindow);

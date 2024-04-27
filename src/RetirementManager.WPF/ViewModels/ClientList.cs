@@ -25,6 +25,8 @@ public class ClientList : ViewModelBase
 
     public ICommand OpenClientWindowCommand { get; set; }
 
+    
+
 
     public Client? SelectedClient
     {
@@ -41,6 +43,8 @@ public class ClientList : ViewModelBase
 
         Clients = new ObservableCollection<Client>();
 
+        SaveClientCommand.ClientsUpdated += UpdateClientUI;
+
         foreach (Client client in repository.GetAll())
         {
             Clients.Add(client);
@@ -49,6 +53,16 @@ public class ClientList : ViewModelBase
         DeleteClientCommand = new DeleteClientCommand(this, repository);
         OpenClientWindowCommand = new OpenClientWindowCommand(repository);
 
+    }
+
+    private void UpdateClientUI()
+    {
+        Clients.Clear();
+
+        foreach(Client client in _repository.GetAll())
+        {
+            Clients.Add(client);
+        }
     }
 }
 

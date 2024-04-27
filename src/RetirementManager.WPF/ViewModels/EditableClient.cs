@@ -67,8 +67,7 @@ namespace RetirementManager.WPF.ViewModels
         public ICommand SaveClientCommand { get; set; }
 
         public EditableClient(Client? client, IRepository<Client> repository, Window clientwindow )
-        {
-     
+        {  
             SaveClientCommand = new SaveClientCommand(repository, clientwindow);
 
             if(client is null)

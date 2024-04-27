@@ -12,13 +12,15 @@ namespace RetirementManager.WPF.Commands
 {
     public class SaveClientCommand : CommandBase
     {
-        private IRepository<Client> _repository;
-        private Window _workerwindow;
+        public static event Action? ClientsUpdated; 
 
-        public SaveClientCommand(IRepository<Client> repository, Window workerwindow)
+        private IRepository<Client> _repository;
+        private Window _clientwindow;
+
+        public SaveClientCommand(IRepository<Client> repository, Window clientwindow)
         {
             _repository = repository;
-            _workerwindow = workerwindow;
+            _clientwindow = clientwindow;
 
         }
 
@@ -35,7 +37,8 @@ namespace RetirementManager.WPF.Commands
                 _repository.Update(client);
             }
 
-            _workerwindow.Close();
+            _clientwindow.Close();
+            ClientsUpdated?.Invoke();
         }
     }
 }

@@ -12,12 +12,8 @@ namespace RetirementManager.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private Window _window;
-
-        public MainViewModel(IRepository<Worker> workerRepository, IRepository<Client> clientRepository, Window clientwindow)
+        public MainViewModel(IRepository<Worker> workerRepository, IRepository<Client> clientRepository)
         {
-            _window = clientwindow;
-
             WorkerList = new WorkerList(workerRepository);
             ClientList = new ClientList(clientRepository);
         }
