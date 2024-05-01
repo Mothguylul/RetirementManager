@@ -27,9 +27,9 @@ public class DeleteWorkerCommand : CommandBase
     {
         // This only runs if CanExecute() is true
 
-        Worker workerToDelete = (parameter as Worker)!;
+        WorkerStatusViewModel workerToDelete = (parameter as WorkerStatusViewModel)!;
 
-        iRepository.Delete(workerToDelete.Id);
+        iRepository.Delete(workerToDelete.Worker.Id);
 
         workerList.Workers.Remove(workerToDelete);
         workerList.SelectedWorker = null;
@@ -38,7 +38,7 @@ public class DeleteWorkerCommand : CommandBase
 
     public override bool CanExecute(object? parameter)
     {
-        return parameter as Worker is not null;
+        return parameter as WorkerStatusViewModel is not null;
     }
 }
 

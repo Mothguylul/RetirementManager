@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RetirementManager.WPF.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="1000">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -23,6 +23,14 @@
                     <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Mobil}"/>
                     <GridViewColumn Header="Birth Date" Width="100" DisplayMemberBinding="{Binding BirthDate}"/>
                     <GridViewColumn Header="Notes" Width="200" DisplayMemberBinding="{Binding Notes}"/>
+                    <GridViewColumn Header="Status" Width="200" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Assignment" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit" Width="80"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -44,7 +52,7 @@
             Margin="10 0 0 0"
             CommandParameter="{Binding SelectedWorker}"
             Command="{Binding OpenWorkerWindowCommand}"/>
-    
+
 
             <Button Content="Delete"
             Width="80"

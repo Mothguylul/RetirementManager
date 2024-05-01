@@ -1,5 +1,6 @@
 ﻿using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
+using RetirementManager.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,25 +21,33 @@ namespace RetirementManager.WPF.Commands
         public SaveWorkerCommand(IRepository<Worker> repository, Window workerWindow)
         {
             _repository = repository;
-            _workerWindow = workerWindow;   
+            _workerWindow = workerWindow;
         }
 
         public override void Execute(object? parameter)
         {
-            Worker worker = (parameter as Worker)!;
 
-            if (worker.Id == 0)
+            if (parameter is "Cancel")
             {
-                _repository.Create(worker);
+                _workerWindow.Close();
+                return;
             }
-            
+
+            WorkerStatusViewModel worker = (parameter as WorkerStatusViewModel)!;
+
+            if (worker.Worker.Id == 0)
+            {
+                _repository.Create(worker.Worker);
+            }
+
             else
             {
-                _repository.Update(worker);
+                _repository.Update(worker.Worker);
             }
 
-            WorkersUpdated?.Invoke();
             _workerWindow.Close();
+            WorkersUpdated?.Invoke();
         }
     }
 }
+

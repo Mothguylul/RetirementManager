@@ -26,7 +26,14 @@ namespace RetirementManager.WPF.Commands
 
         public override void Execute(object? parameter)
         {
+
             Client client = (parameter as Client)!;
+
+            if (parameter is "Cancel")
+            {
+                _clientwindow.Close();
+                return;
+            }
 
             if(client.Id == 0)
             {

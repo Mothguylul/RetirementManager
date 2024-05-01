@@ -42,11 +42,13 @@
          Margin="25"
          Width="50"
          CommandParameter="{Binding Client}"
-         Command="{Binding SaveClientCommand}"            
-                     ></Button>
-                <Button Content="Cancel" 
+         Command="{Binding SaveClientCommand}"></Button>        
+                    
+         <Button Content="Cancel" 
          Margin="25"
-         Width="50"></Button>
+         Width="50"
+         CommandParameter="Cancel"
+            Command="{Binding SaveClientCommand}"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>

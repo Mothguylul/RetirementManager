@@ -14,16 +14,17 @@ namespace RetirementManager.WPF.ViewModels;
 
 public class WorkerList : ViewModelBase
 {
-    public ObservableCollection<Worker> Workers { get; private set; }
+    public ObservableCollection<WorkerStatusViewModel> Workers { get; private set; }
 
     public ICommand DeleteWorkerCommand { get; set; }
     public ICommand OpenWorkerWindowCommand { get; set; }
 
     private IRepository<Worker> _workerRepository;
+    private IRepository<Assignment> _repoAssignment;
 
-    private Worker? _selectedWorker;
+    private WorkerStatusViewModel? _selectedWorker;
 
-    public Worker? SelectedWorker
+    public WorkerStatusViewModel? SelectedWorker
     {
         get => _selectedWorker;
         set
@@ -32,16 +33,17 @@ public class WorkerList : ViewModelBase
             OnPropertyChanged(nameof(SelectedWorker));
         }
     }
-    public WorkerList(IRepository<Worker> iRepository)
+    public WorkerList(IRepository<Worker> iRepository, IRepository<Assignment> repoAsignment)
     {
         _workerRepository = iRepository;
-        Workers = new ObservableCollection<Worker>();
+        _repoAssignment = repoAsignment;
+        Workers = new ObservableCollection<WorkerStatusViewModel>();
 
         SaveWorkerCommand.WorkersUpdated += UpdateWorkerListUI;
 
         foreach (Worker worker in iRepository.GetAll())
         {
-            Workers.Add(worker);
+            Workers.Add(new WorkerStatusViewModel(worker, repoAsignment));
         }
 
         DeleteWorkerCommand = new DeleteWorkerCommand(this, iRepository);
@@ -54,7 +56,7 @@ public class WorkerList : ViewModelBase
 
         foreach (Worker worker in _workerRepository.GetAll())
         {
-            Workers.Add(worker);
+            Workers.Add(new WorkerStatusViewModel(worker, _repoAssignment));
         }
     }
 }

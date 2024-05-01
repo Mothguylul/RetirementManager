@@ -12,9 +12,9 @@ namespace RetirementManager.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public MainViewModel(IRepository<Worker> workerRepository, IRepository<Client> clientRepository)
+        public MainViewModel(IRepository<Worker> workerRepository, IRepository<Client> clientRepository, IRepository<Assignment> repoAssignment)
         {
-            WorkerList = new WorkerList(workerRepository);
+            WorkerList = new WorkerList(workerRepository, repoAssignment);
             ClientList = new ClientList(clientRepository);
         }
 

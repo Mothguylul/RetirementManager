@@ -84,7 +84,7 @@ namespace RetirementManager.WPF.ViewModels
 
         public ICommand SaveWorkerCommand { get; set; }
 
-        public EditableWorker(Worker? worker, IRepository<Worker> repository, Window workerWindow)
+        public EditableWorker(WorkerStatusViewModel? worker, IRepository<Worker> repository, Window workerWindow)
         {
             SaveWorkerCommand = new SaveWorkerCommand(repository, workerWindow);
 
@@ -94,7 +94,7 @@ namespace RetirementManager.WPF.ViewModels
             }
             else
             {
-                _worker = worker;
+                _worker = worker.Worker;
                 Name = worker.Name;
                 Email = worker.Email;
                 BirthDate = worker.BirthDate;

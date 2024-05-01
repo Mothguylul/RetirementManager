@@ -45,11 +45,13 @@
             Margin="25"
             Width="50"
             CommandParameter="{Binding Worker}"
-            Command="{Binding SaveWorkerCommand}"            
-                        ></Button>
-                <Button Content="Cancel" 
+            Command="{Binding SaveWorkerCommand}"></Button>    
+                        
+            <Button Content="Cancel" 
             Margin="25"
-            Width="50"></Button>
+            Width="50"
+            CommandParameter="Cancel"
+            Command="{Binding SaveWorkerCommand}"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>
