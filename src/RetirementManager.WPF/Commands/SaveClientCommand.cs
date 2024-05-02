@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Interfaces;
+﻿using RetirementManager.Database;
+using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,10 @@ namespace RetirementManager.WPF.Commands
     {
         public static event Action? ClientsUpdated; 
 
-        private IRepository<Client> _repository;
         private Window _clientwindow;
 
-        public SaveClientCommand(IRepository<Client> repository, Window clientwindow)
+        public SaveClientCommand(Window clientwindow)
         {
-            _repository = repository;
             _clientwindow = clientwindow;
 
         }
@@ -32,16 +31,17 @@ namespace RetirementManager.WPF.Commands
             if (parameter is "Cancel")
             {
                 _clientwindow.Close();
+                ClientsUpdated?.Invoke();
                 return;
             }
 
             if(client.Id == 0)
             {
-                _repository.Create(client);
+                Data.Clients.Create(client);
             }
             else
             {
-                _repository.Update(client);
+                Data.Clients.Update(client);
             }
 
             _clientwindow.Close();

@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Interfaces;
+﻿using RetirementManager.Database;
+using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
 using RetirementManager.WPF.Commands;
 using RetirementManager.WPF.Views;
@@ -84,9 +85,9 @@ namespace RetirementManager.WPF.ViewModels
 
         public ICommand SaveWorkerCommand { get; set; }
 
-        public EditableWorker(WorkerStatusViewModel? worker, IRepository<Worker> repository, Window workerWindow)
+        public EditableWorker(WorkerStatusViewModel? worker, Window workerWindow)
         {
-            SaveWorkerCommand = new SaveWorkerCommand(repository, workerWindow);
+            SaveWorkerCommand = new SaveWorkerCommand(workerWindow);
 
             if(worker is null)
             {

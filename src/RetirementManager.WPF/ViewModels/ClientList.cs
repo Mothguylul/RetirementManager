@@ -19,8 +19,6 @@ public class ClientList : ViewModelBase
 
     private Client? _selectedClient;
 
-    private IRepository<Client> _repository;
-
     public ICommand DeleteClientCommand { get; set; }
 
     public ICommand OpenClientWindowCommand { get; set; }
@@ -37,21 +35,20 @@ public class ClientList : ViewModelBase
             OnPropertyChanged(nameof(SelectedClient));
         }
     }
-    public ClientList(IRepository<Client> repository)
+    public ClientList()
     {
-        _repository = repository;
 
         Clients = new ObservableCollection<Client>();
 
         SaveClientCommand.ClientsUpdated += UpdateClientUI;
 
-        foreach (Client client in repository.GetAll())
+        foreach (Client client in Data.Clients.GetAll())
         {
             Clients.Add(client);
         }
 
-        DeleteClientCommand = new DeleteClientCommand(this, repository);
-        OpenClientWindowCommand = new OpenClientWindowCommand(repository);
+        DeleteClientCommand = new DeleteClientCommand(this);
+        OpenClientWindowCommand = new OpenClientWindowCommand();
 
     }
 
@@ -59,7 +56,7 @@ public class ClientList : ViewModelBase
     {
         Clients.Clear();
 
-        foreach(Client client in _repository.GetAll())
+        foreach(Client client in Data.Clients.GetAll())
         {
             Clients.Add(client);
         }

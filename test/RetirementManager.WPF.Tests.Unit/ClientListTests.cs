@@ -33,7 +33,7 @@ public class ClientListTests
             },
         });
 
-        sut = new ClientList(repository);
+        sut = new ClientList();
     }
 
     [Fact]

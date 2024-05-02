@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Interfaces;
+﻿using RetirementManager.Database;
+using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
 using RetirementManager.WPF.ViewModels;
 using System;
@@ -14,13 +15,10 @@ namespace RetirementManager.WPF.Commands
     {
         public static event Action? WorkersUpdated;
 
-        private IRepository<Worker> _repository;
-
         private Window _workerWindow;
 
-        public SaveWorkerCommand(IRepository<Worker> repository, Window workerWindow)
+        public SaveWorkerCommand(Window workerWindow)
         {
-            _repository = repository;
             _workerWindow = workerWindow;
         }
 
@@ -30,6 +28,7 @@ namespace RetirementManager.WPF.Commands
             if (parameter is "Cancel")
             {
                 _workerWindow.Close();
+                WorkersUpdated?.Invoke();
                 return;
             }
 
@@ -37,12 +36,12 @@ namespace RetirementManager.WPF.Commands
 
             if (worker.Worker.Id == 0)
             {
-                _repository.Create(worker.Worker);
+                Data.Workers.Create(worker.Worker);
             }
 
             else
             {
-                _repository.Update(worker.Worker);
+                Data.Workers.Update(worker.Worker);
             }
 
             _workerWindow.Close();

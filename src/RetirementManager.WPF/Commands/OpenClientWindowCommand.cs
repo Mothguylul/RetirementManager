@@ -14,11 +14,9 @@ namespace RetirementManager.WPF.Commands
 {
     public class OpenClientWindowCommand : CommandBase
     {
-        private IRepository<Client> _repository;
 
-        public OpenClientWindowCommand(IRepository<Client> repository) 
+        public OpenClientWindowCommand() 
         {
-            _repository = repository;
         }
 
         public override void Execute(object? parameter)
@@ -26,7 +24,7 @@ namespace RetirementManager.WPF.Commands
             AddOrEditClient addoreditclient = new AddOrEditClient();
 
             Client? client = parameter as Client;
-            addoreditclient.DataContext = new EditableClient(client, _repository, addoreditclient);
+            addoreditclient.DataContext = new EditableClient(client, addoreditclient);
             addoreditclient.Show();
 
         }

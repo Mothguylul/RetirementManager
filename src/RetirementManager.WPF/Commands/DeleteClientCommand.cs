@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Interfaces;
+﻿using RetirementManager.Database;
+using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
 using RetirementManager.WPF.ViewModels;
 using System;
@@ -11,27 +12,21 @@ namespace RetirementManager.WPF.Commands
 {
     public class DeleteClientCommand : CommandBase
     {
-        private ClientList clientList;
-        private IRepository<Client> iRepository;
+        private ClientList _clientList;
 
-
-        public DeleteClientCommand(ClientList clientList, IRepository<Client> iRepository)
-        {
-            this.clientList = clientList;
-            this.iRepository = iRepository;
-
+        public DeleteClientCommand(ClientList clientlist) 
+        { 
+            _clientList = clientlist;
         }
 
         public override void Execute(object? parameter)
         {
-            // This only runs if CanExecute() is true
-
             Client clientToDelete = (parameter as Client)!;
 
-            iRepository.Delete(clientToDelete.Id);
+            Data.Clients.Delete(clientToDelete.Id);
 
-            clientList.Clients.Remove(clientToDelete);
-            clientList.SelectedClient = null;
+            _clientList.Clients.Remove(clientToDelete);
+            _clientList.SelectedClient = null;
 
         }
 

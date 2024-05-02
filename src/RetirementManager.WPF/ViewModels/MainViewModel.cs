@@ -14,8 +14,9 @@ namespace RetirementManager.WPF.ViewModels
     {
         public MainViewModel(IRepository<Worker> workerRepository, IRepository<Client> clientRepository, IRepository<Assignment> repoAssignment)
         {
-            WorkerList = new WorkerList(workerRepository, repoAssignment);
-            ClientList = new ClientList(clientRepository);
+            Data.Initializing(workerRepository, repoAssignment, clientRepository);
+            WorkerList = new WorkerList();
+            ClientList = new ClientList();
         }
 
         public WorkerList WorkerList { get; set; }

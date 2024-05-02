@@ -35,7 +35,7 @@ public class DeleteClientCommandTests
             },
         });
 
-        clientList = new ClientList(repository);
+        clientList = new ClientList();
         sut = clientList.DeleteClientCommand;
     }
 

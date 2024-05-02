@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Interfaces;
+﻿using RetirementManager.Database;
+using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -20,19 +21,16 @@ public class WorkerStatusViewModel : ViewModelBase
     private Worker _worker;
     public Worker Worker => _worker;
 
-    private IRepository<Assignment> _repoAssignment;
-
     public string Status => GetStatus();
 
-    public WorkerStatusViewModel(Worker worker, IRepository<Assignment> repoAssignment)
+    public WorkerStatusViewModel(Worker worker)
     {
         _worker = worker;
-        _repoAssignment = repoAssignment;
     }
 
     private string GetStatus()
     {
-        Assignment? workerAssignment = _repoAssignment.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
+        Assignment? workerAssignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
 
         if (workerAssignment == null)
         {

@@ -1,4 +1,5 @@
-﻿using RetirementManager.Domain.Interfaces;
+﻿using RetirementManager.Database;
+using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
 using RetirementManager.WPF.ViewModels;
 using System;
@@ -12,14 +13,12 @@ namespace RetirementManager.WPF.Commands;
 public class DeleteWorkerCommand : CommandBase
 {
 
-    private WorkerList workerList;
-    private IRepository<Worker> iRepository;
+    private WorkerList _workerList;
 
 
-    public DeleteWorkerCommand(WorkerList workerList, IRepository<Worker> iRepository)
+    public DeleteWorkerCommand(WorkerList workerList)
     {
-        this.workerList = workerList;
-        this.iRepository = iRepository;
+        _workerList = workerList;
 
     }
 
@@ -29,10 +28,10 @@ public class DeleteWorkerCommand : CommandBase
 
         WorkerStatusViewModel workerToDelete = (parameter as WorkerStatusViewModel)!;
 
-        iRepository.Delete(workerToDelete.Worker.Id);
+        Data.Workers.Delete(workerToDelete.Worker.Id);
 
-        workerList.Workers.Remove(workerToDelete);
-        workerList.SelectedWorker = null;
+        _workerList.Workers.Remove(workerToDelete);
+        _workerList.SelectedWorker = null;
 
     }
 

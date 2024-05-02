@@ -19,9 +19,6 @@ public class WorkerList : ViewModelBase
     public ICommand DeleteWorkerCommand { get; set; }
     public ICommand OpenWorkerWindowCommand { get; set; }
 
-    private IRepository<Worker> _workerRepository;
-    private IRepository<Assignment> _repoAssignment;
-
     private WorkerStatusViewModel? _selectedWorker;
 
     public WorkerStatusViewModel? SelectedWorker
@@ -33,30 +30,28 @@ public class WorkerList : ViewModelBase
             OnPropertyChanged(nameof(SelectedWorker));
         }
     }
-    public WorkerList(IRepository<Worker> iRepository, IRepository<Assignment> repoAsignment)
+    public WorkerList()
     {
-        _workerRepository = iRepository;
-        _repoAssignment = repoAsignment;
         Workers = new ObservableCollection<WorkerStatusViewModel>();
 
         SaveWorkerCommand.WorkersUpdated += UpdateWorkerListUI;
 
-        foreach (Worker worker in iRepository.GetAll())
+        foreach (Worker worker in Data.Workers.GetAll())
         {
-            Workers.Add(new WorkerStatusViewModel(worker, repoAsignment));
+            Workers.Add(new WorkerStatusViewModel(worker));
         }
 
-        DeleteWorkerCommand = new DeleteWorkerCommand(this, iRepository);
-        OpenWorkerWindowCommand = new OpenWorkerWindowCommand(iRepository);
+        DeleteWorkerCommand = new DeleteWorkerCommand(this);
+        OpenWorkerWindowCommand = new OpenWorkerWindowCommand();
     }
 
     public void UpdateWorkerListUI()
     {
         Workers.Clear();
 
-        foreach (Worker worker in _workerRepository.GetAll())
+        foreach (Worker worker in Data.Workers.GetAll())
         {
-            Workers.Add(new WorkerStatusViewModel(worker, _repoAssignment));
+            Workers.Add(new WorkerStatusViewModel(worker));
         }
     }
 }
