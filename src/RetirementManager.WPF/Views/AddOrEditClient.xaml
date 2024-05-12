@@ -35,6 +35,34 @@
                 <Label Content="Single"/>
                 <TextBox Text="{Binding Single}"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <Label Content="InsuranceNumber"/>
+                <TextBox Text=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <Label Content="HealthInsurance"/>
+                <TextBox Text=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <Label Content="Doctor"/>
+                <TextBox Text=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <Label Content="NursingService"/>
+                <TextBox Text=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <Label Content="NursingService"/>
+                <TextBox Text=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <Label Content="NursingService"/>
+                <TextBox Text=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <Label Content="NursingService"/>
+                <TextBox Text=""/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" 
          Margin="0 50 0 0"
          HorizontalAlignment="Center">

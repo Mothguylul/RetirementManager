@@ -81,6 +81,7 @@ namespace RetirementManager.WPF.ViewModels
 
 
         private Worker _worker;
+
         public Worker Worker => _worker;
 
         public ICommand SaveWorkerCommand { get; set; }

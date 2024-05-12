@@ -30,6 +30,7 @@ public class WorkerList : ViewModelBase
             OnPropertyChanged(nameof(SelectedWorker));
         }
     }
+
     public WorkerList()
     {
         Workers = new ObservableCollection<WorkerStatusViewModel>();
@@ -40,7 +41,7 @@ public class WorkerList : ViewModelBase
         {
             Workers.Add(new WorkerStatusViewModel(worker));
         }
-
+        
         DeleteWorkerCommand = new DeleteWorkerCommand(this);
         OpenWorkerWindowCommand = new OpenWorkerWindowCommand();
     }

@@ -1,11 +1,13 @@
 ﻿using RetirementManager.Database;
 using RetirementManager.Domain.Interfaces;
 using RetirementManager.Domain.Models;
+using RetirementManager.WPF.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace RetirementManager.WPF.ViewModels;
 
@@ -22,10 +24,15 @@ public class WorkerStatusViewModel : ViewModelBase
     public Worker Worker => _worker;
 
     public string Status => GetStatus();
+    public string ButtonStatus => GetButtonStatus();
+
+    public ICommand OpenAssignmentWindowCommand { get; set; }
 
     public WorkerStatusViewModel(Worker worker)
     {
         _worker = worker;
+
+        OpenAssignmentWindowCommand = new OpenAssignmentWindow(_worker);
     }
 
     private string GetStatus()
@@ -36,7 +43,6 @@ public class WorkerStatusViewModel : ViewModelBase
         {
             return "free";
         }
-
 
         if (workerAssignment.Paused)
         {
@@ -50,5 +56,29 @@ public class WorkerStatusViewModel : ViewModelBase
 
         return "free";
     }
+
+    private string GetButtonStatus()
+    {
+
+        Assignment? workerAssignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
+
+        if (workerAssignment == null)
+        {
+            return "Add";
+        }
+
+        if (workerAssignment.Paused)
+        {
+            return "Edit";
+        }
+
+        if (workerAssignment != null)
+        {
+            return "Edit";
+        }
+
+        return "Add";
+    }
+
 }
 

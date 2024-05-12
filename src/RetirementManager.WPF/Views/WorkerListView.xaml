@@ -18,7 +18,7 @@
                   Grid.Row="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/> 
                     <GridViewColumn Header="Email" Width="100" DisplayMemberBinding="{Binding Email}"/>
                     <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Mobil}"/>
                     <GridViewColumn Header="Birth Date" Width="100" DisplayMemberBinding="{Binding BirthDate}"/>
@@ -27,7 +27,9 @@
                     <GridViewColumn Header="Assignment" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Edit" Width="80"/>
+                                <Button Content="{Binding ButtonStatus}" Width="80" 
+                                        CommandParameter="{Binding Worker}"
+                                        Command="{Binding OpenAssignmentWindowCommand}"/> 
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
