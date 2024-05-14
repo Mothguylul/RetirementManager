@@ -13,19 +13,67 @@ namespace RetirementManager.WPF.ViewModels
 {
     public class EditableAssignment : ViewModelBase
     {
+
+        private string startDate { get; set; } = string.Empty;
+
+        public string StartDate
+        {
+            get => startDate;
+            set
+            {
+                startDate = value;
+                Assignment.StartDate = startDate;
+                OnPropertyChanged(nameof(StartDate));
+            }
+        }
+
+        private string endDate { get; set; } = string.Empty;
+
+        public string EndDate
+        {
+            get => endDate;
+            set
+            {
+                endDate = value;
+                Assignment.EndDate = endDate;
+                OnPropertyChanged(nameof(EndDate));
+            }
+        }
+
+        private string notes { get; set; } = string.Empty;
+
+        public string Notes
+        {
+            get => notes;
+            set
+            {
+                notes = value;
+                Assignment.Notes = notes;
+                OnPropertyChanged(nameof(Notes));
+            }
+        }
+
+        private bool ispaused { get; set; }
+        public bool IsPaused
+        {
+            get => ispaused;
+            set
+            {
+                ispaused = value;
+                Assignment.Paused = ispaused;
+                OnPropertyChanged(nameof(IsPaused));
+            }
+        }
+
+        public ICommand SaveAssignmentCommand { get; set; }
+
         public string HeaderStatus => GetHeaderStatusText();
 
         private Worker _worker;
 
-        public string StartDate { get; set; } = string.Empty;
+        private Assignment _assignment; 
 
-        public string EndDate { get; set; } = string.Empty;
-
-        public string Notes { get; set; } = string.Empty;
-
-        public bool IsPaused { get; set; }
-
-        public ICommand SaveAssignmentCommand { get; set; }
+        public Assignment Assignment => _assignment;
 
         public EditableAssignment(Assignment? assignment, Window assignmentWindow, Worker worker)
         {
@@ -35,10 +83,11 @@ namespace RetirementManager.WPF.ViewModels
 
             if (assignment == null )
             {
-                assignment = new Assignment();
+                _assignment = new Assignment();
             }
             else
             {
+                _assignment = assignment;
                 StartDate = assignment.StartDate;
                 EndDate = assignment.EndDate;
                 IsPaused = assignment.Paused;
