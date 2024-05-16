@@ -75,21 +75,24 @@ namespace RetirementManager.WPF.ViewModels
 
         public Assignment Assignment => _assignment;
 
-        public EditableAssignment(Assignment? assignment, Window assignmentWindow, Worker worker)
+        public EditableAssignment(Window assignmentWindow, Worker worker)
         {
             _worker = worker;
 
-            SaveAssignmentCommand = new SaveAssignmentCommand();
+            Assignment? assignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
+
+            SaveAssignmentCommand = new SaveAssignmentCommand(assignmentWindow);
 
             if (assignment == null )
             {
                 _assignment = new Assignment();
+                _assignment.WorkerId = _worker.Id;
             }
             else
             {
                 _assignment = assignment;
                 StartDate = assignment.StartDate;
-                EndDate = assignment.EndDate;
+                EndDate = assignment.EndDate; 
                 IsPaused = assignment.Paused;
                 Notes = assignment.Notes;
             }

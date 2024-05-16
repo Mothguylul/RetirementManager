@@ -36,6 +36,7 @@ public class WorkerList : ViewModelBase
         Workers = new ObservableCollection<WorkerStatusViewModel>();
 
         SaveWorkerCommand.WorkersUpdated += UpdateWorkerListUI;
+        SaveAssignmentCommand.UpdateAssignmentUI += UpdateWorkerListUI;
 
         foreach (Worker worker in Data.Workers.GetAll())
         {

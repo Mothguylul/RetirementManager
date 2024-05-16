@@ -25,8 +25,7 @@ namespace RetirementManager.WPF.Commands
         {
             AddOrEditAssignment addoreditassignment = new AddOrEditAssignment();
 
-            Assignment? assignment = parameter as Assignment;
-            addoreditassignment.DataContext = new EditableAssignment(assignment, addoreditassignment, _worker);
+            addoreditassignment.DataContext = new EditableAssignment(addoreditassignment, _worker);
             addoreditassignment.Show();
         }
     }
