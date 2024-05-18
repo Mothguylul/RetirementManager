@@ -11,5 +11,7 @@ public class Assignment : ModelObject
         public bool Paused { get; set; } = false;
 
         public string Notes { get; set; } = string.Empty;
+        
+        public int ClientID { get; set; }
     }
 

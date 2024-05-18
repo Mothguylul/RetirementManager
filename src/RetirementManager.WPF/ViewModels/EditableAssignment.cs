@@ -65,6 +65,22 @@ namespace RetirementManager.WPF.ViewModels
             }
         }
 
+        private Client? selectedclient { get; set; }
+
+        public Client? SelectedClient
+        {
+            get => selectedclient;
+            set
+            {
+                selectedclient = value;
+                if (selectedclient != null)
+                {
+                    Assignment.ClientID = selectedclient.Id;
+                }
+                OnPropertyChanged(nameof(SelectedClient));
+            }
+        }
+
         public ICommand SaveAssignmentCommand { get; set; }
 
         public string HeaderStatus => GetHeaderStatusText();
@@ -75,9 +91,13 @@ namespace RetirementManager.WPF.ViewModels
 
         public Assignment Assignment => _assignment;
 
+        public List<Client> ClientList { get; set; }
+
+
         public EditableAssignment(Window assignmentWindow, Worker worker)
         {
             _worker = worker;
+            ClientList = (List<Client>)Data.Clients.GetAll();
 
             Assignment? assignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
 
@@ -87,9 +107,13 @@ namespace RetirementManager.WPF.ViewModels
             {
                 _assignment = new Assignment();
                 _assignment.WorkerId = _worker.Id;
+                SelectedClient = null;
             }
             else
             {
+
+                SelectedClient = ClientList.FirstOrDefault(c => c.Id == assignment.ClientID);
+
                 _assignment = assignment;
                 StartDate = assignment.StartDate;
                 EndDate = assignment.EndDate; 

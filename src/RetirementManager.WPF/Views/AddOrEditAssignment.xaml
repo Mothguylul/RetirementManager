@@ -48,7 +48,7 @@
                 <Label>Client</Label>
                 <ComboBox Width="150" 
                   Height="20"
-                  HorizontalAlignment="Right"/>
+                  HorizontalAlignment="Right" ItemsSource="{Binding ClientList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedClient}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
