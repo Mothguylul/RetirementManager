@@ -37,7 +37,10 @@ public class WorkerStatusViewModel : ViewModelBase
 
     private string GetStatus()
     {
-        Assignment? workerAssignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
+        Assignment? workerAssignment = Data.Assignments
+            .GetAll()
+            .Where(a => a.WorkerId == _worker.Id && !a.IsCompleted && !a.IsDeleted)
+            .FirstOrDefault();
 
         if (workerAssignment == null)
         {
@@ -49,10 +52,22 @@ public class WorkerStatusViewModel : ViewModelBase
             return "paused";
         }
 
+        if (workerAssignment.IsCompleted)
+        {
+            return "free";
+        }
+
+        if (workerAssignment.IsDeleted)
+        {
+            return "free";
+        }
+
+
         if (workerAssignment != null)
         {
             return "busy";
         }
+
 
         return "free";
     }
@@ -60,7 +75,10 @@ public class WorkerStatusViewModel : ViewModelBase
     private string GetButtonStatus()
     {
 
-        Assignment? workerAssignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
+        Assignment? workerAssignment = Data.Assignments
+                    .GetAll()
+                    .Where(a => a.WorkerId == _worker.Id && !a.IsCompleted && !a.IsDeleted)
+                    .FirstOrDefault();
 
         if (workerAssignment == null)
         {

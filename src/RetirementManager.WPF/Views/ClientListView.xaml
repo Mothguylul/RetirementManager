@@ -57,6 +57,10 @@
         Margin="10 0 0 0"
         Command="{Binding DeleteClientCommand}"
         CommandParameter="{Binding SelectedClient}"/>
+            
+        <TextBox Width="100" Height="25" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0" FontSize="15" />
         </StackPanel>
+
+
     </Grid>
 </UserControl>

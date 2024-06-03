@@ -19,12 +19,11 @@ public class ClientList : ViewModelBase
 
     private Client? _selectedClient;
 
+    private List<Client> _allclients;
+
     public ICommand DeleteClientCommand { get; set; }
 
     public ICommand OpenClientWindowCommand { get; set; }
-
-    
-
 
     public Client? SelectedClient
     {
@@ -35,10 +34,24 @@ public class ClientList : ViewModelBase
             OnPropertyChanged(nameof(SelectedClient));
         }
     }
+
+    private string? _searchText;
+    public string? SearchText
+    {
+        get => _searchText;
+        set
+        {
+            _searchText = value;
+            OnPropertyChanged(nameof(SearchText));
+            FilterClients();
+        }
+    }
+
     public ClientList()
     {
 
         Clients = new ObservableCollection<Client>();
+        _allclients = new List<Client>();
 
         SaveClientCommand.ClientsUpdated += UpdateClientUI;
 
@@ -57,6 +70,19 @@ public class ClientList : ViewModelBase
         Clients.Clear();
 
         foreach(Client client in Data.Clients.GetAll())
+        {
+            Clients.Add(client);
+        }
+    }
+
+    private void FilterClients()
+    {
+        var filterclients = string.IsNullOrWhiteSpace(SearchText)
+            ? _allclients
+            : _allclients.Where(w => w.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        Clients.Clear();
+        foreach (var client in filterclients)
         {
             Clients.Add(client);
         }

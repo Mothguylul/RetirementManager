@@ -14,11 +14,6 @@ namespace RetirementManager.WPF.Commands
 {
     public class OpenClientWindowCommand : CommandBase
     {
-
-        public OpenClientWindowCommand() 
-        {
-        }
-
         public override void Execute(object? parameter)
         {
             AddOrEditClient addoreditclient = new AddOrEditClient();

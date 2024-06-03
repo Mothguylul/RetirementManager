@@ -15,11 +15,6 @@ namespace RetirementManager.WPF.Commands
 {
     public class OpenWorkerWindowCommand : CommandBase
     {
-
-        public OpenWorkerWindowCommand() 
-        {
-        }
-
         public override void Execute(object? parameter)
         {
             AddOrEditWorker addoreditworker = new AddOrEditWorker();

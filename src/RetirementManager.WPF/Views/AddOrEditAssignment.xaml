@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RetirementManager.WPF.Views"
         mc:Ignorable="d"
-        Title="AddOrEditAssignment" Height="450" Width="800">
+        Title="{Binding HeaderStatus}" Height="450" Width="800">
 
     <Window.Resources>
         <Style TargetType="TextBox">
@@ -53,7 +53,7 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <Label>Paused</Label>
-                <RadioButton HorizontalAlignment="Center" Margin="10 5 0 0" IsChecked="{Binding IsPaused}"></RadioButton>
+                <CheckBox HorizontalAlignment="Center" Margin="10 5 0 0" IsChecked="{Binding IsPaused}"></CheckBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -64,6 +64,10 @@
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Content="Save" Margin="0 10 5 0" Command="{Binding SaveAssignmentCommand}" CommandParameter ="{Binding Assignment}"></Button>
                 
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Content="End Assignment" Margin="0 10 5 0" CommandParameter="{Binding Assignment}" Command="{Binding DeleteAssignmentCommand}"></Button>
+
             </StackPanel>
 
         </StackPanel>

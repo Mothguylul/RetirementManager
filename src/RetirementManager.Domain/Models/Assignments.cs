@@ -9,9 +9,13 @@ public class Assignment : ModelObject
         public string EndDate { get; set; } = string.Empty;
 
         public bool Paused { get; set; } = false;
+        
+        public bool IsDeleted { get; set; } = false;
+      
+        public bool IsCompleted { get; set; } = false;
 
         public string Notes { get; set; } = string.Empty;
         
-        public int ClientID { get; set; }
+        public int ClientId { get; set; }
     }
 

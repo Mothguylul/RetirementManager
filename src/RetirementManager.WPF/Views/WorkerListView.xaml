@@ -18,7 +18,7 @@
                   Grid.Row="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/> 
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="Email" Width="100" DisplayMemberBinding="{Binding Email}"/>
                     <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Mobil}"/>
                     <GridViewColumn Header="Birth Date" Width="100" DisplayMemberBinding="{Binding BirthDate}"/>
@@ -29,7 +29,7 @@
                             <DataTemplate>
                                 <Button Content="{Binding ButtonStatus}" Width="80" 
                                         CommandParameter="{Binding Worker}"
-                                        Command="{Binding OpenAssignmentWindowCommand}"/> 
+                                        Command="{Binding OpenAssignmentWindowCommand}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -38,6 +38,8 @@
         </ListView>
 
         <!-- Row 1 -->
+
+
         <StackPanel Orientation="Horizontal"
             Grid.Row="1">
 
@@ -62,6 +64,7 @@
             Margin="10 0 0 0"
             Command="{Binding DeleteWorkerCommand}"
             CommandParameter="{Binding SelectedWorker}"/>
+            <TextBox Width="100" Height="25" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0" FontSize="15" />
         </StackPanel>
     </Grid>
 </UserControl>

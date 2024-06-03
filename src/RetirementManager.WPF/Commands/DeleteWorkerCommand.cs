@@ -15,7 +15,6 @@ public class DeleteWorkerCommand : CommandBase
 
     private WorkerList _workerList;
 
-
     public DeleteWorkerCommand(WorkerList workerList)
     {
         _workerList = workerList;

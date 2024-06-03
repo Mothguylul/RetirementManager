@@ -11,5 +11,8 @@
         <DataTemplate DataType="{x:Type viewmodels:ClientList}">
             <views:ClientListView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:AssignmentHistory}">
+            <views:AssignmentHistoryView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>

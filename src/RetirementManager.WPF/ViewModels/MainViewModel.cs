@@ -17,10 +17,12 @@ namespace RetirementManager.WPF.ViewModels
             Data.Initializing(workerRepository, repoAssignment, clientRepository);
             WorkerList = new WorkerList();
             ClientList = new ClientList();
+            AssignmentHistory = new AssignmentHistory();
         }
 
         public WorkerList WorkerList { get; set; }
         public ClientList ClientList { get; set; }
+        public AssignmentHistory AssignmentHistory { get; set; }
 
     }
 }

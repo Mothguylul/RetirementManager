@@ -75,24 +75,24 @@ namespace RetirementManager.WPF.ViewModels
                 selectedclient = value;
                 if (selectedclient != null)
                 {
-                    Assignment.ClientID = selectedclient.Id;
+                    Assignment.ClientId = selectedclient.Id;
                 }
                 OnPropertyChanged(nameof(SelectedClient));
             }
         }
 
         public ICommand SaveAssignmentCommand { get; set; }
+        public ICommand DeleteAssignmentCommand { get; set; }
 
         public string HeaderStatus => GetHeaderStatusText();
 
         private Worker _worker;
 
-        private Assignment _assignment; 
+        private Assignment _assignment;
 
         public Assignment Assignment => _assignment;
 
         public List<Client> ClientList { get; set; }
-
 
         public EditableAssignment(Window assignmentWindow, Worker worker)
         {
@@ -102,8 +102,9 @@ namespace RetirementManager.WPF.ViewModels
             Assignment? assignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
 
             SaveAssignmentCommand = new SaveAssignmentCommand(assignmentWindow);
+            DeleteAssignmentCommand = new DeleteAssignmentCommand(assignmentWindow);
 
-            if (assignment == null )
+            if (assignment == null)
             {
                 _assignment = new Assignment();
                 _assignment.WorkerId = _worker.Id;
@@ -111,20 +112,24 @@ namespace RetirementManager.WPF.ViewModels
             }
             else
             {
-
-                SelectedClient = ClientList.FirstOrDefault(c => c.Id == assignment.ClientID);
-
                 _assignment = assignment;
-                StartDate = assignment.StartDate;
-                EndDate = assignment.EndDate; 
-                IsPaused = assignment.Paused;
-                Notes = assignment.Notes;
+
+                if (!_assignment.IsDeleted && !_assignment.IsCompleted)
+                {
+
+                    SelectedClient = ClientList.Where(c => c.Id == assignment.ClientId).FirstOrDefault();
+
+                    StartDate = assignment.StartDate;
+                    EndDate = assignment.EndDate;
+                    IsPaused = assignment.Paused;  
+                    Notes = assignment.Notes;
+                }
             }
         }
 
         private string GetHeaderStatusText()
         {
-            Assignment? workerAssignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
+            Assignment? workerAssignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id && !a.IsDeleted && !a.IsCompleted);
 
             if (workerAssignment == null)
             {

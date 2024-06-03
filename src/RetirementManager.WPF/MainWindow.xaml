@@ -12,6 +12,7 @@
         <TabControl>
             <TabItem Header="Clients" Content="{Binding ClientList}"/>
             <TabItem Header="Workers" Content="{Binding WorkerList}"/>
+            <TabItem Header="Assignment Histroy" Content="{Binding AssignmentHistory}"></TabItem>
         </TabControl>
     </Grid>
 </Window>
