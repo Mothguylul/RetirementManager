@@ -24,6 +24,7 @@
                     <GridViewColumn Header="Birth Date" Width="100" DisplayMemberBinding="{Binding BirthDate}"/>
                     <GridViewColumn Header="Notes" Width="200" DisplayMemberBinding="{Binding Notes}"/>
                     <GridViewColumn Header="Status" Width="200" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Town" Width="200" DisplayMemberBinding="{Binding Town}"/>
                     <GridViewColumn Header="Assignment" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -37,9 +38,8 @@
             </ListView.View>
         </ListView>
 
+
         <!-- Row 1 -->
-
-
         <StackPanel Orientation="Horizontal"
             Grid.Row="1">
 
@@ -65,6 +65,16 @@
             Command="{Binding DeleteWorkerCommand}"
             CommandParameter="{Binding SelectedWorker}"/>
             <TextBox Width="100" Height="25" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0" FontSize="15" />
+
+            <Menu Margin="10 0 0 0" Height="24" FontSize="14" Width="70">
+                <MenuItem Header="Order by">
+                    <Button Content="Town1" Command="{Binding SortByTown1}" ></Button>
+                    <Button Content="Town2" Command="{Binding SortByTown2}" ></Button>
+                    <Button Content="Town3" Command="{Binding SortByTown3}"></Button>
+                    <Button Content="Show All" Command="{Binding GetAll}"></Button>
+                </MenuItem>
+            </Menu>
+
         </StackPanel>
     </Grid>
 </UserControl>

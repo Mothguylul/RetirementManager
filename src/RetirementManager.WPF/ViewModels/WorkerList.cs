@@ -18,9 +18,13 @@ public class WorkerList : ViewModelBase
     private List<WorkerStatusViewModel> _allWorkers;
 
     public ICommand DeleteWorkerCommand { get; set; }
+
     public ICommand OpenWorkerWindowCommand { get; set; }
 
+    public ICommand GetAll { get; set; }
+
     private WorkerStatusViewModel? _selectedWorker;
+
     private string? _searchText;
 
     public string? SearchText
@@ -33,6 +37,10 @@ public class WorkerList : ViewModelBase
             FilterWorkers();
         }
     }
+
+    public ICommand SortByTown1 { get; set; }
+    public ICommand SortByTown2 { get; set; }
+    public ICommand SortByTown3 { get; set; }
 
     public WorkerStatusViewModel? SelectedWorker
     {
@@ -62,6 +70,11 @@ public class WorkerList : ViewModelBase
 
         DeleteWorkerCommand = new DeleteWorkerCommand(this);
         OpenWorkerWindowCommand = new OpenWorkerWindowCommand();
+
+        SortByTown1 = new SortByTown<Worker>(Workers, "Town1");
+        SortByTown2 = new SortByTown<Worker>(Workers, "Town2");
+        SortByTown3 = new SortByTown<Worker>(Workers, "Town3");
+        GetAll = new SortByTown<Worker>(Workers, "GetAll");
     }
 
     public void UpdateWorkerListUI()

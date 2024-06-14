@@ -5,6 +5,7 @@ using RetirementManager.WPF.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,18 +14,25 @@ namespace RetirementManager.WPF.ViewModels;
 
 public class WorkerStatusViewModel : ViewModelBase
 {
-
     public string Name => _worker.Name;
+
     public string Email => _worker.Email;
+
     public string BirthDate => _worker.BirthDate;
+
     public int Mobil => _worker.Mobil;
+
     public string Notes => _worker.Notes;
 
     private Worker _worker;
+
     public Worker Worker => _worker;
 
     public string Status => GetStatus();
+
     public string ButtonStatus => GetButtonStatus();
+
+    public string Town => _worker.TownName;
 
     public ICommand OpenAssignmentWindowCommand { get; set; }
 
@@ -68,7 +76,6 @@ public class WorkerStatusViewModel : ViewModelBase
             return "busy";
         }
 
-
         return "free";
     }
 
@@ -97,6 +104,5 @@ public class WorkerStatusViewModel : ViewModelBase
 
         return "Add";
     }
-
 }
 

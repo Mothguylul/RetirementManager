@@ -7,31 +7,12 @@ using RetirementManager.Domain.Models;
 
 public class ModelTests
 {
-    [Fact]
-    public void Town_ShouldBeNewable()
-    {
-        // Arrange
-        int newTownId = 1;
-        string newTownName = "Miami";
-
-        // Act
-        var freshTown = new Town();
-        var initializedTown = new Town() { Id = newTownId, Name = newTownName };
-
-        // Assert
-        freshTown.Id.Should().Be(0);
-        freshTown.Name.Should().BeEquivalentTo(string.Empty);
-
-        initializedTown.Id.Should().Be(1);
-        initializedTown.Name.Should().BeEquivalentTo(newTownName);
-    }
 
     [Fact]
     public void Worker_ShouldBeNewable()
     {
         // Arrange
         int newWorkerId = 1;
-        int newWorkerTownId = 1;
         string newWorkerName = "John";
         string newWorkerEmail = "john89@gmail.com";
         int newWorkerPhone = 5559993;
@@ -43,7 +24,6 @@ public class ModelTests
         var initializedWorker = new Worker()
         {
             Id = newWorkerId,
-            TownId = newWorkerTownId,
             Name = newWorkerName,
             Email = newWorkerEmail,
             Mobil = newWorkerPhone,
@@ -53,7 +33,6 @@ public class ModelTests
 
         // Assert
         freshWorker.Id.Should().Be(0);
-        freshWorker.TownId.Should().Be(0);
         freshWorker.Name.Should().BeEquivalentTo(string.Empty);
         freshWorker.Email.Should().BeEquivalentTo(string.Empty);
         freshWorker.Mobil.Should().Be(0);
@@ -61,7 +40,6 @@ public class ModelTests
         freshWorker.Notes.Should().BeEquivalentTo(string.Empty);
 
         initializedWorker.Id.Should().Be(newWorkerId);
-        initializedWorker.TownId.Should().Be(newWorkerTownId);
         initializedWorker.Name.Should().BeEquivalentTo(newWorkerName);
         initializedWorker.Email.Should().BeEquivalentTo(newWorkerEmail);
         initializedWorker.Mobil.Should().Be(newWorkerPhone);

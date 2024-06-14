@@ -27,7 +27,6 @@ namespace RetirementManager.WPF.Commands
 
             _clientList.Clients.Remove(clientToDelete);
             _clientList.SelectedClient = null;
-
         }
 
         public override bool CanExecute(object? parameter)

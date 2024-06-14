@@ -18,7 +18,11 @@
             <ListView.View >
                 <GridView>
                     <GridViewColumn Header="Nr." Width="100" DisplayMemberBinding="{Binding Nr}"/>
-                    <GridViewColumn Header="Classification" Width="500" DisplayMemberBinding="{Binding Classification}"></GridViewColumn>
+                    <GridViewColumn Header="Worker" Width="200" DisplayMemberBinding="{Binding Worker}" ></GridViewColumn>
+                    <GridViewColumn Header="Client" Width="200" DisplayMemberBinding="{Binding Client}"></GridViewColumn>
+                    <GridViewColumn Header="Workingperiod" Width="200" DisplayMemberBinding="{Binding DatePeriod}"></GridViewColumn>
+                    <GridViewColumn Header="Notes" Width="200" DisplayMemberBinding="{Binding Notes}"></GridViewColumn>
+                    <GridViewColumn Header="Mainstatus" Width="200" DisplayMemberBinding="{Binding MainStatus}"></GridViewColumn>
 
                 </GridView>
             </ListView.View>
@@ -27,11 +31,8 @@
         <!-- Row 1 -->
         <StackPanel Orientation="Horizontal"
  Grid.Row="1">
-
-            <Button Content="View Details"
- Width="80"
- Height="25"
- Margin="10 0 0 0"/>
+            <Label Content="Search Worker"></Label>
+                <TextBox Width="100" Height="25" Margin="10 0 0 0" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TextBox>
         </StackPanel>
            
     </Grid>

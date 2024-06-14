@@ -2,7 +2,7 @@
 
 public class Worker : ModelObject
 {
-    public int TownId { get; set; }
+    public string TownName { get; set; } = string.Empty;
 
     public string Name { get; set; } = string.Empty;
 

@@ -99,7 +99,7 @@ namespace RetirementManager.WPF.ViewModels
             _worker = worker;
             ClientList = (List<Client>)Data.Clients.GetAll();
 
-            Assignment? assignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id);
+            Assignment? assignment = Data.Assignments.GetAll().FirstOrDefault(a => a.WorkerId == _worker.Id && !a.IsDeleted && !a.IsCompleted);
 
             SaveAssignmentCommand = new SaveAssignmentCommand(assignmentWindow);
             DeleteAssignmentCommand = new DeleteAssignmentCommand(assignmentWindow);

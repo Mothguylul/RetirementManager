@@ -101,7 +101,7 @@ namespace RetirementManager.WPF.ViewModels
                 Email = worker.Email;
                 BirthDate = worker.BirthDate;
                 Notes = worker.Notes;
-                Mobil = worker.Mobil.ToString();
+                Mobil = worker.Mobil.ToString();               
             }
         }
     }
